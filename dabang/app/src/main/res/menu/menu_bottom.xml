@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/main_home_icon"
+        android:enabled="true"
+        android:title="홈" />
+
+    <item android:id="@+id/action_heart"
+        android:icon="@drawable/main_heart_icon"
+        android:enabled="true"
+        android:title="관심목록"/>
+
+    <item android:id="@+id/action_map"
+        android:icon="@drawable/main_location_icon"
+        android:enabled="true"
+        android:title="지도"/>
+
+    <item android:id="@+id/action_more"
+        android:icon="@drawable/main_more_icon"
+        android:enabled="true"
+        android:title="더보기"/>
+</menu>
