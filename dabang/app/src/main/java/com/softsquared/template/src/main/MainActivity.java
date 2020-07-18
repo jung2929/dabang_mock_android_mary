@@ -1,23 +1,20 @@
 package com.softsquared.template.src.main;
 
-import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
 import com.softsquared.template.R;
+import com.softsquared.template.src.Adapter.ViewPagerAdapter;
 import com.softsquared.template.src.BaseActivity;
-import com.softsquared.template.src.common.view.SimpleMessageDialog;
-import com.softsquared.template.src.common.view.TwoChoiceDialog;
 import com.softsquared.template.src.fragment.fragment_heart;
 import com.softsquared.template.src.fragment.fragment_home;
 import com.softsquared.template.src.fragment.fragment_map;
@@ -33,13 +30,21 @@ public class MainActivity extends BaseActivity implements MainActivityView {
     private fragment_heart heart;
     private fragment_map map;
     private fragment_more more;
-
+    private FragmentPagerAdapter fragmentPagerAdapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        ViewPager viewPager = findViewById(R.id.viewPager);
+//        fragmentPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+//
+//        TabLayout tabLayout = findViewById(R.id.tab_layout);
+//        viewPager.setAdapter(fragmentPagerAdapter);
+//        tabLayout.setupWithViewPager(viewPager);
+
 
         bottomNavigationView = findViewById(R.id.bottomNavi);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
