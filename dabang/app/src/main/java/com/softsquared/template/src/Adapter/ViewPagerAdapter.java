@@ -6,7 +6,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.softsquared.template.src.heart_fragment.frag_call_estate;
 import com.softsquared.template.src.heart_fragment.frag_heart_bang;
+import com.softsquared.template.src.heart_fragment.frag_heart_dangi;
+import com.softsquared.template.src.heart_fragment.frag_info_bang;
 import com.softsquared.template.src.heart_fragment.frag_recent_bang;
 import com.softsquared.template.src.heart_fragment.frag_recent_dangi;
 
@@ -27,6 +30,12 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                 return frag_recent_dangi.newInstance();
             case 2:
                 return frag_heart_bang.newInstance();
+            case 3:
+                return frag_heart_dangi.newInstance();
+            case 4:
+                return frag_info_bang.newInstance();
+            case 5:
+                return frag_call_estate.newInstance();
             default:
                 return null;
         }
@@ -35,7 +44,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 6;
     }
 
     //상단 TabLayout 인디케이터 쪽에 텍스트를 선언
@@ -49,6 +58,12 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
                 return "최근 본 단지";
             case 2:
                 return "찜한 방";
+            case 3:
+                return "찜한 단지";
+            case 4:
+                return "문의한 방";
+            case 5:
+                return "연락한 부동산";
             default:
                 return null;
         }

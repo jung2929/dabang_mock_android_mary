@@ -4,6 +4,9 @@
     package="com.softsquared.template">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.DIAL_PHONE" />
 
     <application
         android:name=".src.ApplicationClass"
@@ -17,6 +20,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="n">
+        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".src.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,10 +28,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDUYhbsE8saEm7M3v_H1T6ZERgB353oAUY"/>
 
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyDUYhbsE8saEm7M3v_H1T6ZERgB353oAUY" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

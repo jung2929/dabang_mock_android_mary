@@ -30,21 +30,13 @@ public class MainActivity extends BaseActivity implements MainActivityView {
     private fragment_heart heart;
     private fragment_map map;
     private fragment_more more;
-    private FragmentPagerAdapter fragmentPagerAdapter;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        ViewPager viewPager = findViewById(R.id.viewPager);
-//        fragmentPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-//
-//        TabLayout tabLayout = findViewById(R.id.tab_layout);
-//        viewPager.setAdapter(fragmentPagerAdapter);
-//        tabLayout.setupWithViewPager(viewPager);
-
 
         bottomNavigationView = findViewById(R.id.bottomNavi);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
