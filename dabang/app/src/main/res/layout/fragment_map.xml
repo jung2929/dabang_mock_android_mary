@@ -17,16 +17,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/button2"
+
+        <SearchView
+            android:id="@+id/btn_map_search"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_height="match_parent"
+            android:queryHint="신촌역 원룸"
+            android:queryBackground="@null"
+            android:iconifiedByDefault="false"
+            android:clickable="true"
+            android:focusable="false"
+            android:focusableInTouchMode="false" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -100,11 +107,13 @@
             android:layout_height="match_parent"
             android:content="@+id/content"
             android:handle="@+id/handle"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:allowSingleTap="false">
 
 
             <LinearLayout
                 android:id="@+id/handle"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
@@ -119,7 +128,7 @@
                     android:src="@android:drawable/button_onoff_indicator_off" />
 
                 <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tab"
+                    android:id="@+id/tab_layout2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:tabIndicatorColor="#000000">
@@ -154,30 +163,13 @@
                 android:background="#ffffff"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/text1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="test1"
-                    android:visibility="visible"
-                    android:gravity="center"/>
 
-                <TextView
-                    android:id="@+id/text2"
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPager2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="test2"
-                    android:visibility="invisible"
-                    android:gravity="center"/>
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/text3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="test3"
-                    android:visibility="invisible"
-                    android:gravity="center"/>
-
+                </androidx.viewpager.widget.ViewPager>
             </FrameLayout>
 
         </SlidingDrawer>

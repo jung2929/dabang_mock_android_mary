@@ -1,29 +1,40 @@
 package com.softsquared.template.src.fragment;
 
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.tabs.TabLayout;
 import com.softsquared.template.R;
+import com.softsquared.template.SearchActivity;
+import com.softsquared.template.src.Adapter.ViewPagerAdapter2;
 
-public class fragment_map extends Fragment implements OnMapReadyCallback {
+public class fragment_map extends Fragment implements OnMapReadyCallback , View.OnClickListener{
     private View view;
     private MapView mapView;
-    private TabLayout tabLayout;
+    private FragmentPagerAdapter fragmentPagerAdapter;
 
 
     @Nullable
@@ -31,76 +42,64 @@ public class fragment_map extends Fragment implements OnMapReadyCallback {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_map, container, false);
 
-        tabLayout=view.findViewById(R.id.tab);
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                int pos = tab.getPosition();
-                changeView(pos);
-            }
+        ViewPager viewPager = view.findViewById(R.id.viewPager2);
+        fragmentPagerAdapter = new ViewPagerAdapter2(getChildFragmentManager());
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
+        TabLayout tabLayout = view.findViewById(R.id.tab_layout2);
+        viewPager.setAdapter(fragmentPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
 
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
+        SearchView btn_map_search = view.findViewById(R.id.btn_map_search);
+        btn_map_search.setOnClickListener(this);
 
         mapView=view.findViewById(R.id.googleMap);
         mapView.onCreate(savedInstanceState);
+        mapView.onResume();
         mapView.getMapAsync(this);
 
         return view;
     }
 
 
-    private void changeView(int index){
-        TextView textView1 = view.findViewById(R.id.text1);
-        TextView textView2 = view.findViewById(R.id.text2);
-        TextView textView3 = view.findViewById(R.id.text3);
 
-        switch(index){
-            case 0:
-                textView1.setVisibility(view.VISIBLE);
-                textView2.setVisibility(view.INVISIBLE);
-                textView3.setVisibility(view.INVISIBLE);
-                break;
-            case 1:
-                textView1.setVisibility(view.INVISIBLE);
-                textView2.setVisibility(view.VISIBLE);
-                textView3.setVisibility(view.INVISIBLE);
-                break;
-            case 2:
-                textView1.setVisibility(view.INVISIBLE);
-                textView2.setVisibility(view.INVISIBLE);
-                textView3.setVisibility(view.VISIBLE);
-                break;
-        }
-    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-//        LatLng location = new LatLng(37.485284,126.901451);
-//        MarkerOptions markerOptions = new MarkerOptions();
-//        markerOptions.title("구로디지털단지역");
-//        markerOptions.snippet("전철역");
-//        markerOptions.position(location);
-//        googleMap.addMarker(markerOptions);
-//
-//        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,16));
-
-        LatLng SEOUL = new LatLng(37.56, 126.97);
+        LatLng location = new LatLng(37.485284,126.901451);
         MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(SEOUL);
-        markerOptions.title("서울");
-        markerOptions.snippet("수도");
+        markerOptions.title("구로디지털단지역");
+        markerOptions.snippet("전철역");
+        markerOptions.position(location);
+        markerOptions.icon((getIcon()));
         googleMap.addMarker(markerOptions);
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(SEOUL));
-        googleMap.animateCamera(CameraUpdateFactory.zoomTo(13));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,16));
+
+    }
+
+    public BitmapDescriptor getIcon(){
+        Drawable circleDrawable = getResources().getDrawable(R.drawable.circle);
+        return getMarkerIconFromDrawable(circleDrawable);
+
+    }
+
+    private BitmapDescriptor getMarkerIconFromDrawable(Drawable drawable) {
+        Canvas canvas = new Canvas();
+        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        canvas.setBitmap(bitmap);
+        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+        drawable.draw(canvas);
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
+
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.btn_map_search:
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
+        }
 
     }
 }

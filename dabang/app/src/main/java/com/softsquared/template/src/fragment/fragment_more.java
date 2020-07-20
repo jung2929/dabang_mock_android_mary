@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.softsquared.template.LoginActivity;
 import com.softsquared.template.R;
 
 public class fragment_more extends Fragment implements View.OnClickListener {
@@ -28,8 +30,11 @@ public class fragment_more extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_more, container, false);
 
+        LinearLayout login = view.findViewById(R.id.login);
+
         call_center=view.findViewById(R.id.call_center);
         call_center.setOnClickListener(this);
+        login.setOnClickListener(this);
         return view;
     }
 
@@ -40,6 +45,9 @@ public class fragment_more extends Fragment implements View.OnClickListener {
             case R.id.call_center:
                 startActivity(new Intent("android.intent.action.DIAL", Uri.parse(tel)));
                 break;
+            case R.id.login:
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
 
         }
     }
