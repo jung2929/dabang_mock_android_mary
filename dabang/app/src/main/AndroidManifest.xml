@@ -21,15 +21,14 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup"
         tools:targetApi="n">
-
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".src.main.MainActivity"/>
+        <activity android:name=".src.RoomDetail.roomDetailActivity"></activity>
+        <activity android:name=".src.Search.SearchActivity" />
+        <activity android:name=".src.Login.LoginActivity" />
+        <activity android:name=".src.main.MainActivity" />
         <activity
-            android:name=".SplashActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:screenOrientation="portrait">
-
+            android:name=".src.Splash.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

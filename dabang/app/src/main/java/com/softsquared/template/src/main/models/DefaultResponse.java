@@ -3,7 +3,7 @@ package com.softsquared.template.src.main.models;
 import com.google.gson.annotations.SerializedName;
 
 public class DefaultResponse {
-    @SerializedName("code")
+    @SerializedName("code") //서버에서 받아온 response를 자동으로 파싱해줌
     private int code;
 
     @SerializedName("message")

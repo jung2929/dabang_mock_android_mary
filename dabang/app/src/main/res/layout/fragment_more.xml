@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
-    tools:context=".src.fragment.fragment_more">
+    tools:context=".src.main.more.fragment_more">
 
 
     <LinearLayout
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="로그인>"
-            android:textColor="#000000"
+            android:textColor="@color/colorDabang_Black"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -118,7 +118,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#E2E2E2" />
+        android:background="@color/colorDabang_Gray" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -139,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="매물번호 조회"
-                android:textColor="#000000"
+                android:textColor="@color/colorDabang_Black"
                 android:textStyle="bold" />
 
             <TextView
@@ -148,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="자주 묻는 질문"
-                android:textColor="#000000"
+                android:textColor="@color/colorDabang_Black"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -164,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="이벤트"
-                android:textColor="#000000"
+                android:textColor="@color/colorDabang_Black"
                 android:textStyle="bold" />
 
             <TextView
@@ -173,7 +173,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="공지사항"
-                android:textColor="#000000"
+                android:textColor="@color/colorDabang_Black"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -189,7 +189,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="1:1문의"
-                android:textColor="#000000"
+                android:textColor="@color/colorDabang_Black"
                 android:textStyle="bold" />
 
             <TextView
@@ -209,7 +209,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#E2E2E2" />
+        android:background="@color/colorDabang_Gray" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -240,7 +240,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#E2E2E2" />
+        android:background="@color/colorDabang_Gray" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -260,7 +260,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:textColor="#000000"
+                android:textColor="@color/colorDabang_Black"
                 android:text="패밀리 App" />
 
             <LinearLayout
@@ -321,7 +321,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="다방 SNS"
-                android:textColor="#000000"/>
+                android:textColor="@color/colorDabang_Black"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -378,13 +378,13 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#E2E2E2" />
+        android:background="@color/colorDabang_Gray" />
 
     <TextView
         android:id="@+id/call_center"
         android:clickable="true"
         android:gravity="center"
-        android:background="#E2E2E2"
+        android:background="@color/colorDabang_Gray"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="고객센터 02-1899-6840" />

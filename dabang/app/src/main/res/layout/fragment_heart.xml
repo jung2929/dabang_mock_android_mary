@@ -4,7 +4,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".src.fragment.fragment_heart">
+tools:context=".src.main.heart.fragment_heart">
 
 
 <androidx.appcompat.widget.Toolbar
@@ -71,6 +71,8 @@ tools:context=".src.fragment.fragment_heart">
 
     </com.google.android.material.tabs.TabLayout>
 
+
+
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/const_vp"
     android:layout_width="match_parent"
@@ -79,6 +81,11 @@ tools:context=".src.fragment.fragment_heart">
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/tab_layout">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDabang_Gray" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"

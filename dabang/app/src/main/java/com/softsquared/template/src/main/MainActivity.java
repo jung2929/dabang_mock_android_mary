@@ -6,19 +6,15 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.tabs.TabLayout;
 import com.softsquared.template.R;
-import com.softsquared.template.src.Adapter.ViewPagerAdapter;
 import com.softsquared.template.src.BaseActivity;
-import com.softsquared.template.src.fragment.fragment_heart;
-import com.softsquared.template.src.fragment.fragment_home;
-import com.softsquared.template.src.fragment.fragment_map;
-import com.softsquared.template.src.fragment.fragment_more;
+import com.softsquared.template.src.main.heart.fragment_heart;
+import com.softsquared.template.src.main.home.fragment_home;
+import com.softsquared.template.src.main.map.fragment_map;
+import com.softsquared.template.src.main.more.fragment_more;
 import com.softsquared.template.src.main.interfaces.MainActivityView;
 
 public class MainActivity extends BaseActivity implements MainActivityView {
@@ -90,21 +86,22 @@ public class MainActivity extends BaseActivity implements MainActivityView {
     }
 
     private void tryGetTest() {
-        showProgressDialog();
+        showProgressDialog(); //통신시작함
 
-        final MainService mainService = new MainService(this);
-        mainService.getTest();
+        final MainService mainService = new MainService(this); //this: MainActivityView를 implement했기 때문
+        mainService.getTest(); //MainActivity에서 통신하는 방법: MainService객체를 생성하고 함수호출
     }
 
+    //implement MainActivityView
     @Override
     public void validateSuccess(String text) {
-        hideProgressDialog();
-        showCustomToast(text);
+        hideProgressDialog();//통신끝
+        showCustomToast(text); //토스트메세지로 띄워줌
     }
 
     @Override
     public void validateFailure(@Nullable String message) {
-        hideProgressDialog();
+        hideProgressDialog();//통신끝
         showCustomToast(message == null || message.isEmpty() ? getString(R.string.network_error) : message);
     }
 

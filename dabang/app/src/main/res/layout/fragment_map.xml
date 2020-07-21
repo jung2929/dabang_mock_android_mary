@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".src.fragment.fragment_map">
+    tools:context=".src.main.map.fragment_map">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -29,7 +29,7 @@
             android:focusable="false"
             android:focusableInTouchMode="false" />
 
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -69,20 +69,20 @@
                     android:text="Button" />
 
                 <Button
-                    android:id="@+id/button10"
+                    android:id="@+id/button11"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Button" />
 
                 <Button
-                    android:id="@+id/button11"
+                    android:id="@+id/button10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Button" />
             </LinearLayout>
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
 
     </LinearLayout>
 
@@ -113,7 +113,6 @@
 
             <LinearLayout
                 android:id="@+id/handle"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
@@ -150,7 +149,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="중개사무소" />
+
                 </com.google.android.material.tabs.TabLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorDabang_Gray" />
 
 
             </LinearLayout>

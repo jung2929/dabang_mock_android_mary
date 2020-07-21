@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".src.Login.LoginActivity"
     android:orientation="vertical">
 
     <ImageView
         android:clickable="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:id="@+id/imageView5"
+        android:id="@+id/login_clear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_baseline_close_24" />
