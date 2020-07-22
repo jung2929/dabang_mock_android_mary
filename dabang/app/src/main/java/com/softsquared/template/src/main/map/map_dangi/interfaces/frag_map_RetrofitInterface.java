@@ -13,15 +13,25 @@ import retrofit2.http.Query;
 
 public interface frag_map_RetrofitInterface {
     //    @GET("/test")
-    @GET("/complex/list?dong=대치동&roomType=원룸|오피스텔|아파트|투쓰리룸")
+
+    @GET("/complex/list")
     Call<FragMapResponse> getTest(
-            @Query("complexName") String complexName ,
-            @Query("complexAdress")  String complexAdress,
-            @Query("complexImg")  String complexImg,
-            @Query("kindOfBuilding")  String kindOfBuilding,
-            @Query("householdNum")  String householdNum,
-            @Query("completionDate")  String completionDate
+            @Query("dong") String dong ,
+            @Query("roomType")  String roomType   // 고칠필요x
+
     );
+
+//    @GET("/complex/list")
+//    Call<FragMapResponse> getTest(
+//            @Query("complexName") String complexName ,
+//            @Query("complexAdress")  String complexAdress,
+//            @Query("complexImg")  String complexImg,
+//            @Query("kindOfBuilding")  String kindOfBuilding,
+//            @Query("householdNum")  String householdNum,
+//            @Query("completionDate")  String completionDate
+//
+//
+//    );
 
 //    @GET("/test/{result}")
 //    Call<FragMapResponse> getTestPathAndQuery(

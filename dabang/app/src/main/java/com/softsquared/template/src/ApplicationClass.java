@@ -22,7 +22,7 @@ public class ApplicationClass extends Application {
     // 테스트 서버 주소
     //public static String BASE_URL = "http://52.78.11.153/";
     // 실서버 주소
-   public static String BASE_URL = "mandumerry.ga";
+   public static String BASE_URL = "http://mandumerry.ga/";
 
     public static SharedPreferences sSharedPreferences = null;
 

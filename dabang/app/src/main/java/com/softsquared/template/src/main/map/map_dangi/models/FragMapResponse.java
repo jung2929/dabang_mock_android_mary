@@ -1,16 +1,17 @@
 package com.softsquared.template.src.main.map.map_dangi.models;
 
-import android.content.ClipData;
-
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
 
 public class FragMapResponse {
 
-    class result {
+    public class result {
+
         @SerializedName("complexNum")
         private String complexNum;
+
+        @SerializedName("complexList")
+        private ComplexList[] complexList;
 
         public String getComplexNum() {
             return complexNum;
@@ -20,12 +21,10 @@ public class FragMapResponse {
             return complexList;
         }
 
-        @SerializedName("complexList")
-        ComplexList[] complexList;
-
     }
 
         public class ComplexList {
+
             @SerializedName("complexIdx")
             private String complexIdx;
 
@@ -49,6 +48,9 @@ public class FragMapResponse {
 
             @SerializedName("householdNum")
             private String householdNum;
+
+            @SerializedName("completionDate")
+            private String completionDate;
 
             public String getComplexIdx() {
                 return complexIdx;
@@ -85,12 +87,7 @@ public class FragMapResponse {
             public String getCompletionDate() {
                 return completionDate;
             }
-
-            @SerializedName("completionDate")
-            private String completionDate;
-
-
-            }
+        }
 
 
     @SerializedName("code") //서버에서 받아온 response를 자동으로 파싱해줌
@@ -105,8 +102,15 @@ public class FragMapResponse {
     @SerializedName("result")
     private result result;
 
+    @SerializedName("complexList")
+    private ComplexList complexList;
+
     public result getResult() {
         return result;
+    }
+
+    public ComplexList getComplexList() {
+        return complexList;
     }
 
     public int getCode() {
@@ -120,6 +124,4 @@ public class FragMapResponse {
     public boolean getIsSuccess() {
         return isSuccess;
     }
-
-
 }
