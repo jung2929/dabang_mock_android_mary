@@ -4,8 +4,9 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#3169F2</color>
     <color name="colorDabang">#3169F2</color>
-    <color name="colorDabang_Gray">#E2E2E2</color>
+    <color name="colorDabang_Gray">#ECECEC</color>
     <color name="colorDabang_Black">#000000</color>
     <color name="colorDabang_White">#ffffff</color>
+    <color name="colorDabang_bottomNavigationBar">#F8F8F8</color>
 
 </resources>

@@ -3,8 +3,8 @@
     <item
         android:id="@+id/action_home"
         android:icon="@drawable/main_home_icon"
-
-        android:title="홈" />
+        android:title="홈"
+        />
 
     <item android:id="@+id/action_heart"
         android:icon="@drawable/main_heart_icon"
@@ -12,11 +12,15 @@
         android:title="관심목록" />
 
 
-
     <item android:id="@+id/action_map"
         android:icon="@drawable/main_location_icon"
 
         android:title="지도"/>
+
+    <item android:id="@+id/action_apart"
+        android:icon="@drawable/main_apart_icon"
+
+        android:title="분양"/>
 
     <item android:id="@+id/action_more"
         android:icon="@drawable/main_more_icon"

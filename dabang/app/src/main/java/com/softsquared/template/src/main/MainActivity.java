@@ -11,10 +11,11 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.softsquared.template.R;
 import com.softsquared.template.src.BaseActivity;
-import com.softsquared.template.src.main.heart.fragment_heart;
-import com.softsquared.template.src.main.home.fragment_home;
-import com.softsquared.template.src.main.map.fragment_map;
-import com.softsquared.template.src.main.more.fragment_more;
+import com.softsquared.template.src.main.ApartFragment.ApartFragment;
+import com.softsquared.template.src.main.HeartFragment.HeartFragment;
+import com.softsquared.template.src.main.HomeFragment.HomeFragment;
+import com.softsquared.template.src.main.MapFragment.MapFragment;
+import com.softsquared.template.src.main.MoreFragment.MoreFragment;
 import com.softsquared.template.src.main.interfaces.MainActivityView;
 
 public class MainActivity extends BaseActivity implements MainActivityView {
@@ -22,10 +23,12 @@ public class MainActivity extends BaseActivity implements MainActivityView {
     private BottomNavigationView bottomNavigationView;
     private FragmentManager fm;
     private FragmentTransaction ft;
-    private fragment_home home;
-    private fragment_heart heart;
-    private fragment_map map;
-    private fragment_more more;
+    private HomeFragment home;
+    private HeartFragment heart;
+    private MapFragment map;
+    private ApartFragment apart;
+    private MoreFragment more;
+
 
 
 
@@ -48,17 +51,21 @@ public class MainActivity extends BaseActivity implements MainActivityView {
                     case R.id.action_map:
                         setFrag(2);
                         break;
-                    case R.id.action_more:
+                    case R.id.action_apart:
                         setFrag(3);
+                        break;
+                    case R.id.action_more:
+                        setFrag(4);
                         break;
                 }
                 return true;
             }
         });
-        home = new fragment_home();
-        heart = new fragment_heart();
-        map = new fragment_map();
-        more = new fragment_more();
+        home = new HomeFragment();
+        heart = new HeartFragment();
+        map = new MapFragment();
+        apart = new ApartFragment();
+        more = new MoreFragment();
         setFrag(0); //첫화면 지정
     }
 
@@ -79,6 +86,10 @@ public class MainActivity extends BaseActivity implements MainActivityView {
                 ft.commit();
                 break;
             case 3:
+                ft.replace(R.id.main_frame,apart);
+                ft.commit();
+                break;
+            case 4:
                 ft.replace(R.id.main_frame,more);
                 ft.commit();
                 break;

@@ -21,9 +21,9 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup"
         tools:targetApi="n">
-        <activity android:name=".src.RoomDetail.roomDetailActivity"></activity>
+        <activity android:name=".src.RoomDetail.RoomDetailActivity"></activity>
         <activity android:name=".src.Search.SearchActivity" />
-        <activity android:name=".src.Login.LoginActivity" />
+        <activity android:name=".src.main.MoreFragment.Login.LoginActivity" />
         <activity android:name=".src.main.MainActivity" />
         <activity
             android:name=".src.Splash.SplashActivity"
@@ -42,6 +42,10 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false"/>
     </application>
 
 </manifest>

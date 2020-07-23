@@ -1,31 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
-    tools:context=".src.main.more.fragment_more">
+    tools:context=".src.main.MoreFragment.MoreFragment">
 
 
     <LinearLayout
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingTop="30dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="27dp"
         android:clickable="true"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView2"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="로그인>"
-            android:textColor="@color/colorDabang_Black"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="로그인 "
+                android:textColor="@color/colorDabang_Black"
+                android:textSize="23dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=">"
+                android:textColor="@color/colorDabang_Black"
+                android:textSize="19dp"
+                 />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textView3"
@@ -38,8 +55,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="30dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginVertical="35dp"
+        android:layout_marginLeft="15dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -123,14 +140,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginVertical="22dp"
+        android:layout_marginLeft="15dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
+            android:layout_marginBottom="18dp"
+            android:layout_marginRight="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -139,6 +157,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="매물번호 조회"
+                android:textSize="21dp"
                 android:textColor="@color/colorDabang_Black"
                 android:textStyle="bold" />
 
@@ -148,6 +167,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="자주 묻는 질문"
+                android:textSize="21dp"
                 android:textColor="@color/colorDabang_Black"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -155,7 +175,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
+            android:layout_marginBottom="18dp"
             android:orientation="horizontal">
 
             <TextView
@@ -164,6 +184,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="이벤트"
+                android:textSize="21dp"
                 android:textColor="@color/colorDabang_Black"
                 android:textStyle="bold" />
 
@@ -173,6 +194,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="공지사항"
+                android:textSize="21dp"
                 android:textColor="@color/colorDabang_Black"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -180,7 +202,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -189,6 +210,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="1:1문의"
+                android:textSize="21dp"
                 android:textColor="@color/colorDabang_Black"
                 android:textStyle="bold" />
 
@@ -214,27 +236,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginVertical="17dp"
+        android:layout_marginStart="15dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textView21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="이용약관 |" />
+            android:text="이용약관 |"
+            android:textSize="16dp"/>
 
         <TextView
             android:id="@+id/textView22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" 개인정보 처리방침 |" />
+            android:text=" 개인정보 처리방침 |"
+            android:textSize="16dp"/>
 
         <TextView
             android:id="@+id/textView23"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" 회사소개" />
+            android:text=" 회사소개"
+            android:textSize="16dp"/>
     </LinearLayout>
 
     <View
@@ -245,8 +270,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginVertical="23dp"
+        android:layout_marginStart="15dp"
 
         android:orientation="vertical">
 
@@ -259,9 +284,10 @@
                 android:id="@+id/textView24"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="8dp"
                 android:textColor="@color/colorDabang_Black"
-                android:text="패밀리 App" />
+                android:text="패밀리 App"
+                android:textSize="12dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -285,7 +311,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="다방프로" />
+                        android:text="다방프로"
+                        android:textSize="12dp"/>
 
                 </LinearLayout>
 
@@ -305,7 +332,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="다방허브" />
+                        android:text="다방허브"
+                        android:textSize="12dp"/>
 
                 </LinearLayout>
             </LinearLayout>
@@ -319,8 +347,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="8dp"
                 android:text="다방 SNS"
+                android:textSize="12dp"
                 android:textColor="@color/colorDabang_Black"/>
 
             <LinearLayout
@@ -345,7 +374,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="페이스북" />
+                        android:text="페이스북"
+                        android:textSize="12dp"/>
 
                 </LinearLayout>
 
@@ -364,7 +394,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="네이버포스트" />
+                        android:text="네이버포스트"
+                        android:textSize="12dp"/>
 
                 </LinearLayout>
             </LinearLayout>

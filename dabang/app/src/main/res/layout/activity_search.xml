@@ -48,7 +48,7 @@
 
         <TextView
             android:id="@+id/textView10"
-            android:textColor="#3169F2"
+            android:textColor="@color/colorDabang"
             android:textStyle="bold"
             android:textSize="20dp"
             android:layout_width="match_parent"
@@ -60,7 +60,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#E2E2E2" />
+        android:background="@color/colorDabang_Gray" />
 
 
 </LinearLayout>
