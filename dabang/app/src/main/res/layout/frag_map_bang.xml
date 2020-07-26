@@ -18,4 +18,10 @@
         android:text="살고 싶은 오피스텔, 아파트를 발견하면 찜 해주세요!"
         android:textSize="15dp"
         android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 </LinearLayout>

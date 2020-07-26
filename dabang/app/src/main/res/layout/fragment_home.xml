@@ -10,13 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp">
+        >
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -73,7 +74,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="60dp">
+            android:layout_marginTop="60dp"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/textView7"
@@ -233,7 +235,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="60dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -403,7 +406,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="60dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -551,9 +555,14 @@
                     </LinearLayout>
                 </LinearLayout>
             </HorizontalScrollView>
-
-
         </LinearLayout>
+
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/home_viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
 
         <LinearLayout
             android:layout_width="match_parent"

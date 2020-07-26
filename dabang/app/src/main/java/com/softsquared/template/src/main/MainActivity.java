@@ -2,6 +2,7 @@ package com.softsquared.template.src.main;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TabHost;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,11 +12,11 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.softsquared.template.R;
 import com.softsquared.template.src.BaseActivity;
-import com.softsquared.template.src.main.ApartFragment.ApartFragment;
-import com.softsquared.template.src.main.HeartFragment.HeartFragment;
-import com.softsquared.template.src.main.HomeFragment.HomeFragment;
-import com.softsquared.template.src.main.MapFragment.MapFragment;
-import com.softsquared.template.src.main.MoreFragment.MoreFragment;
+import com.softsquared.template.src.main.Apart.ApartFragment;
+import com.softsquared.template.src.main.Heart.HeartFragment;
+import com.softsquared.template.src.main.Home.HomeFragment;
+import com.softsquared.template.src.main.Map.MapFragment;
+import com.softsquared.template.src.main.More.MoreFragment;
 import com.softsquared.template.src.main.interfaces.MainActivityView;
 
 public class MainActivity extends BaseActivity implements MainActivityView {

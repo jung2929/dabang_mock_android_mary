@@ -18,12 +18,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup"
         tools:targetApi="n">
-        <activity android:name=".src.RoomDetail.RoomDetailActivity"></activity>
+        <activity android:name=".src.Detail.EstateDetailActivity"></activity>
+        <activity android:name=".src.Detail.ComplexDetailActivity" />
+        <activity android:name=".src.main.More.Login.LoginToEmailActivity" />
+        <activity android:name=".src.Detail.RoomDetailActivity" />
         <activity android:name=".src.Search.SearchActivity" />
-        <activity android:name=".src.main.MoreFragment.Login.LoginActivity" />
+        <activity android:name=".src.main.More.Login.LoginActivity" />
         <activity android:name=".src.main.MainActivity" />
         <activity
             android:name=".src.Splash.SplashActivity"
@@ -45,7 +49,7 @@
 
         <uses-library
             android:name="org.apache.http.legacy"
-            android:required="false"/>
+            android:required="false" />
     </application>
 
 </manifest>

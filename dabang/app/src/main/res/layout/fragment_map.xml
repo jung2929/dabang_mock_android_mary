@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".src.main.MapFragment.MapFragment">
+    tools:context=".src.main.Map.MapFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -108,7 +108,8 @@
             android:content="@+id/content"
             android:handle="@+id/handle"
             android:orientation="vertical"
-            android:allowSingleTap="false">
+            android:allowSingleTap="false"
+            >
 
 
             <LinearLayout
@@ -136,21 +137,25 @@
                         android:id="@+id/tab_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:clickable="true"
                         android:text="전체 방" />
 
                     <com.google.android.material.tabs.TabItem
                         android:id="@+id/tab_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:clickable="true"
                         android:text="단지" />
 
                     <com.google.android.material.tabs.TabItem
                         android:id="@+id/tab_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:clickable="true"
                         android:text="중개사무소" />
 
                 </com.google.android.material.tabs.TabLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -158,7 +163,6 @@
 
 
             </LinearLayout>
-
 
             <FrameLayout
                 android:id="@+id/content"
@@ -171,7 +175,7 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewPager2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="565dp">
 
                 </androidx.viewpager.widget.ViewPager>
             </FrameLayout>
