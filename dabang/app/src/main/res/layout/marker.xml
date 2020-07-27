@@ -7,7 +7,7 @@
         android:id="@+id/map_marker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="8"
+        android:text="0"
         android:gravity="center"
         android:textSize="30dp"
         android:textColor="@color/colorDabang_White"

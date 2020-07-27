@@ -14,10 +14,10 @@ import retrofit2.Response;
 import static com.softsquared.template.src.ApplicationClass.getRetrofit;
 
 class MapComplexFragService {
-    private final MapComplexFragView mfrag_map_dangi_view; //
+    private final MapComplexFragView mMapComplexFragView; //
 
-    MapComplexFragService(final MapComplexFragView FragMapDangiView) {
-       this.mfrag_map_dangi_view = FragMapDangiView;
+    MapComplexFragService(final MapComplexFragView mapComplexFragView) {
+       this.mMapComplexFragView = mapComplexFragView;
 
     }
 
@@ -31,13 +31,13 @@ class MapComplexFragService {
                 //FragMapResponse는 자동으로 값을 파싱해줌
                 if (fragMapComplexResponse == null) {
                     //System.out.println("여기까지 오나");
-                    mfrag_map_dangi_view.validateFailure(null);
+                    mMapComplexFragView.validateFailure(null);
                     return;
                 }
 
                 //System.out.println("여기까지 오나");
                 //mfrag_map_dangi_view.validateSuccess(fragMapResponse.getMessage());
-                mfrag_map_dangi_view.validateSuccess(fragMapComplexResponse.getResult());//이 줄만 고쳐서 파싱한 정보 넘겨주기
+                mMapComplexFragView.validateSuccess(fragMapComplexResponse.getResult());//이 줄만 고쳐서 파싱한 정보 넘겨주기
 
 
                 //frag_map_dangi에 있는 validateFailure(),validateSuccess()가 돌게됨
@@ -46,7 +46,7 @@ class MapComplexFragService {
             @Override
             public void onFailure(Call<FragMapComplexResponse> call, Throwable t) {
                 //System.out.println("여기까지 오나2");
-                mfrag_map_dangi_view.validateFailure(null);
+                mMapComplexFragView.validateFailure(null);
             }
 
 

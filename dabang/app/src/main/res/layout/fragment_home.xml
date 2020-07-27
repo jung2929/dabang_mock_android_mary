@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:stickyHeader="@+id/titleLayout">
+    app:stickyHeader="@+id/titleLayout"
+   >
 
 
     <LinearLayout
@@ -17,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="12dp">
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -33,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:text="어떤 동네, 어떤 방에서"
                 android:textColor="@color/colorDabang_Black"
-                android:textSize="30dp"
+                android:textSize="35dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -43,7 +44,7 @@
                 android:layout_marginBottom="30dp"
                 android:text="살고 싶으신가요?"
                 android:textColor="@color/colorDabang_Black"
-                android:textSize="30dp"
+                android:textSize="35dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -52,20 +53,44 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="#ffffff"
+            android:background="#E6ffffff"
+            android:padding="12dp"
             android:layout_marginVertical="15dp">
 
-            <SearchView
+
+            <LinearLayout
                 android:id="@+id/btn_search"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:queryHint="신촌역 원룸"
-                android:queryBackground="@null"
-                android:iconifiedByDefault="false"
                 android:clickable="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/search2"
+            android:gravity="center"
+            android:orientation="horizontal"
+                android:elevation="10dp"
+                >
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/noborder"
+                android:hint="신촌역 원룸"
+                android:textSize="15dp"
+                android:textColorHint="@color/colorDabang"
+                android:padding="12dp"
                 android:focusable="false"
-                android:focusableInTouchMode="false"
-                />
+                android:singleLine="true" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="5dp"
+                app:srcCompat="@drawable/home_search" />
+
+        </LinearLayout>
+
+
 
         </LinearLayout>
 
@@ -410,6 +435,7 @@
             android:padding="10dp">
 
             <TextView
+                android:id="@+id/home_recommend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingVertical="10dp"

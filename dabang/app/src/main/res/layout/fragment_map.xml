@@ -18,16 +18,39 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <SearchView
+        <LinearLayout
             android:id="@+id/btn_map_search"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:queryHint="신촌역 원룸"
-            android:queryBackground="@null"
-            android:iconifiedByDefault="false"
             android:clickable="true"
-            android:focusable="false"
-            android:focusableInTouchMode="false" />
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/noborder"
+                android:hint="신촌역 원룸"
+                android:textSize="18dp"
+                android:textColorHint="@color/colorDabang_Black"
+                android:padding="12dp"
+                android:focusable="false"
+                android:singleLine="true" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:padding="5dp"
+                android:layout_marginRight="5dp"
+                app:srcCompat="@drawable/mapsearch" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorDabang_Gray" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -36,51 +59,35 @@
             >
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:background="@color/colorDabang_Gray"
+                android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/roomType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
+                    android:text="원룸, 투쓰리룸,오피스텔 " />
 
                 <Button
-                    android:id="@+id/button7"
-                    android:layout_width="match_parent"
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
+                    android:text="가격" />
 
                 <Button
-                    android:id="@+id/button8"
-                    android:layout_width="match_parent"
+                    android:id="@+id/lease"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
+                    android:text="관리비" />
 
                 <Button
-                    android:id="@+id/button9"
-                    android:layout_width="match_parent"
+                    android:id="@+id/roomSize"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
+                    android:text="방 크기" />
 
-                <Button
-                    android:id="@+id/button11"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
-
-                <Button
-                    android:id="@+id/button10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 

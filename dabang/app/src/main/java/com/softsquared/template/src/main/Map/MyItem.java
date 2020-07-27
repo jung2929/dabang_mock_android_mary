@@ -11,7 +11,7 @@ public class MyItem implements ClusterItem {
     private final LatLng mPosition;
 
 
-    public MyItem(double lat, double lng) {
+    public MyItem(float lat, float lng) {
        mPosition = new LatLng(lat,lng);
     }
 

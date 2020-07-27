@@ -13,12 +13,14 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.softsquared.template.R;
-import com.softsquared.template.src.main.Map.MapComplex.ComplexInfo;
+import com.softsquared.template.src.main.Map.MapComplex.models.ComplexInfo;
 
 
-
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.google.android.gms.common.internal.ImagesContract.URL;
 
 public class ComplexAdapter extends ArrayAdapter implements AdapterView.OnItemClickListener {
 
@@ -77,8 +79,9 @@ public class ComplexAdapter extends ArrayAdapter implements AdapterView.OnItemCl
         Glide
                 .with(context)
                 .load(complexInfo.getComplexImg())
-                .apply(new RequestOptions().override(350,300))
+                .apply(new RequestOptions().override(100,200))
                 .into(viewHolder.complexImg);
+
 
 
 

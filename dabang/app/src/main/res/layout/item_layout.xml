@@ -16,60 +16,59 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginRight="70dp"
+            >
 
             <TextView
                 android:id="@+id/complexName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:textColor="@color/colorDabang_Black"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textColor="@color/colorDabang_Black" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/kindOfBuilding"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
                     android:layout_marginRight="5dp"
-                    android:textColor="@color/colorDabang_Black"/>
+                    android:text="TextView"
+                    android:textColor="@color/colorDabang_Black" />
 
                 <TextView
                     android:id="@+id/householdNum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView"
                     android:layout_marginRight="5dp"
-                    android:textColor="@color/colorDabang_Black"/>
+                    android:text="TextView"
+                    android:textColor="@color/colorDabang_Black" />
 
                 <TextView
                     android:id="@+id/completionDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="TextView"
-                    android:textColor="@color/colorDabang_Black"/>
+                    android:textColor="@color/colorDabang_Black" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/complexAddress"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
         </LinearLayout>
 
         <ImageView
             android:id="@+id/complexImg"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             tools:srcCompat="@mipmap/ic_launcher" />
 
     </LinearLayout>

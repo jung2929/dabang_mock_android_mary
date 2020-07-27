@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.softsquared.template.R;
-import com.softsquared.template.src.main.Map.MapComplex.ComplexInfo;
+import com.softsquared.template.src.main.Map.MapComplex.models.ComplexInfo;
 
 import java.util.ArrayList;
 import java.util.List;

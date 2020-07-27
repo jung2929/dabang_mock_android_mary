@@ -1,4 +1,4 @@
-package com.softsquared.template.src.main.Map.MapComplex;
+package com.softsquared.template.src.main.Map.MapComplex.models;
 
 public class ComplexInfo {
     private static String complexName;
