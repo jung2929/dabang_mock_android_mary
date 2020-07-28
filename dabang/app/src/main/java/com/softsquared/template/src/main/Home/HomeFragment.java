@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,19 +35,20 @@ import java.util.TimerTask;
 public class HomeFragment extends Fragment implements View.OnClickListener, HomeFragView {
     private View view;
     private LinearLayout btn_search;
-    private ViewPager viewPager;
-    private AutoScrollAdapter autoScrollAdapter;
+    //private ViewPager viewPager;
+    //private AutoScrollAdapter autoScrollAdapter;
     private StickyScrollView stickyScrollView;
-    private static final int SCROLL_DIRECTION_UP = 1;
+   // private static final int SCROLL_DIRECTION_UP = 1;
     private LinearLayout titleLayout;
     Handler handler3;
     public static ArrayList<postInfo> sPostInfo;
     TextView home_recommend;
+    ViewFlipper viewFlipper;
 
-    int currentPage = 0;
-    Timer timer;
-    final long DELAY_MS = 500;//delay in milliseconds before task is to be executed
-    final long PERIOD_MS = 3000; // time in milliseconds between successive task executions.
+//    int currentPage = 0;
+//    Timer timer;
+//    final long DELAY_MS = 500;//delay in milliseconds before task is to be executed
+//    final long PERIOD_MS = 3000; // time in milliseconds between successive task executions.
 
     @Nullable
     @Override
@@ -62,35 +65,42 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         });
         t.start();
 
+        viewFlipper=view.findViewById(R.id.home_viewFlipper);
+        viewFlipper.setFlipInterval(2000); //2초
+        viewFlipper.startFlipping();
+
+
         btn_search = view.findViewById(R.id.btn_search);
         btn_search.setOnClickListener(this);
 
-        viewPager = view.findViewById(R.id.home_viewPager);
-        autoScrollAdapter = new AutoScrollAdapter(getActivity());
-        viewPager.setAdapter(autoScrollAdapter);
+//        viewPager = view.findViewById(R.id.home_viewPager);
+//        autoScrollAdapter = new AutoScrollAdapter(getActivity());
+//        viewPager.setAdapter(autoScrollAdapter);
 
-        final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
-            @Override
-            public void run() {
-                if(currentPage == 9) {
-                    currentPage = 0;
-                }
-                viewPager.setCurrentItem(currentPage++, true);
-            }
-        };
-
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, DELAY_MS, PERIOD_MS);
+//        final Handler handler = new Handler();
+//        final Runnable Update = new Runnable() {
+//            @Override
+//            public void run() {
+//                if(currentPage == 9) {
+//                    currentPage = 0;
+//                }
+//                viewPager.setCurrentItem(currentPage++, true);
+//            }
+//        };
+//
+//        timer = new Timer();
+//        timer.schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                handler.post(Update);
+//            }
+//        }, DELAY_MS, PERIOD_MS);
 
         home_recommend = view.findViewById(R.id.home_recommend);
         titleLayout=view.findViewById(R.id.titleLayout);
         titleLayout.setClickable(true);
+
+
 
         return view;
     }
@@ -125,6 +135,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     public void validateFailure(String message) {
 
     }
+
 
 }
 

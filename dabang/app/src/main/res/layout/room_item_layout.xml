@@ -21,11 +21,18 @@
             android:layout_marginRight="10dp">
 
 
-            <androidx.viewpager2.widget.ViewPager2
+            <com.aqoong.lib.slidephotoviewer.SlidePhotoViewer
+                android:id="@+id/roomSlideViewer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </androidx.viewpager2.widget.ViewPager2>
+                android:layout_height="180dp"
+                android:layout_centerInParent="true"
+                android:background="@color/colorAccent"
+                app:autoSlide="false"
+                app:autoSlide_repeat_time="1000"
+                app:maxSize="5"
+                app:placeholder="@drawable/ic_placeholder"
+                app:sidePreview="false"
+                app:useIndicator="true" />
 
             <TextView
                 android:id="@+id/monthlyRent"
@@ -114,11 +121,18 @@
             android:orientation="vertical">
 
 
-            <androidx.viewpager2.widget.ViewPager2
+            <com.aqoong.lib.slidephotoviewer.SlidePhotoViewer
+                android:id="@+id/roomSlideViewer2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </androidx.viewpager2.widget.ViewPager2>
+                android:layout_height="180dp"
+                android:layout_centerInParent="true"
+                android:background="@color/colorAccent"
+                app:autoSlide="false"
+                app:autoSlide_repeat_time="1000"
+                app:maxSize="5"
+                app:placeholder="@drawable/ic_placeholder"
+                app:sidePreview="false"
+                app:useIndicator="true" />
 
             <TextView
                 android:id="@+id/monthlyRent"
@@ -200,6 +214,8 @@
 
         </LinearLayout>
 
+
+
     </LinearLayout>
 
     <View
@@ -211,7 +227,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="15dp">
 
         <ImageView
             android:layout_gravity="center_vertical"
@@ -219,7 +235,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/circle"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="20dp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -231,7 +247,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="(주)케플러부동산중개법인"
-                android:textSize="20dp"
+                android:textSize="15dp"
                 android:textStyle="bold"
                 android:textColor="@color/colorDabang_Black"/>
 

@@ -20,7 +20,7 @@ import java.util.List;
 public class HeartComplexAdapter extends ArrayAdapter implements AdapterView.OnItemClickListener {
 
     private Context context;
-    private List list;
+    private ArrayList<ComplexInfo> list;
 
 
     @Override
@@ -66,11 +66,11 @@ public class HeartComplexAdapter extends ArrayAdapter implements AdapterView.OnI
         //viewHolder.Img_url = (TextView) convertView.findViewById(R.id.Img_url);
 
         //final Dangi_info dangi_info = (Dangi_info) list.get(position);
-        viewHolder.complexName1.setText(ComplexInfo.getComplexName());
-        viewHolder.kindOfBuilding1.setText(ComplexInfo.getKindOfBuilding());
-        viewHolder.householdNum1.setText(ComplexInfo.getHouseholdNum());
-        viewHolder.completionDate1.setText(ComplexInfo.getCompletionDate());
-        viewHolder.complexAddress1.setText(ComplexInfo.getComplexAddress());
+        viewHolder.complexName1.setText(list.get(position).getComplexName());
+        viewHolder.kindOfBuilding1.setText(list.get(position).getKindOfBuilding());
+        viewHolder.householdNum1.setText(list.get(position).getHouseholdNum());
+        viewHolder.completionDate1.setText(list.get(position).getCompletionDate());
+        viewHolder.complexAddress1.setText(list.get(position).getComplexAddress());
 
 
 

@@ -1,14 +1,12 @@
 package com.softsquared.template.src.main.Map.MapComplex;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,17 +15,18 @@ import androidx.fragment.app.Fragment;
 import com.softsquared.template.R;
 import com.softsquared.template.src.main.Map.MapComplex.models.ComplexInfo;
 import com.softsquared.template.src.main.Map.MapComplex.models.FragMapComplexResponse;
-import com.softsquared.template.src.main.More.Login.LoginActivity;
-import com.softsquared.template.src.Search.SearchActivity;
 import com.softsquared.template.src.main.Map.MapComplex.Adapter.ComplexAdapter;
 import com.softsquared.template.src.main.Map.MapComplex.interfaces.MapComplexFragView;
+
 
 import java.util.ArrayList;
 
 public class MapComplexFragment extends Fragment implements MapComplexFragView {
 
+    ArrayList<ComplexInfo> complexInfos = new ArrayList<>();
+
     private View view;
-    private static ArrayList<ComplexInfo> complex;
+    private ArrayList<ComplexInfo> complex;
     private static ListView listview;
     private static ComplexAdapter complexAdapter;
     Handler MapComplexHandler;
@@ -82,7 +81,21 @@ public class MapComplexFragment extends Fragment implements MapComplexFragView {
 
     @Override  //매개변수 고치기
     public void validateSuccess(FragMapComplexResponse.result result) {
+//        ArrayList<ComplexInfo> complexInfos = new ArrayList<>();
+        FragMapComplexResponse.ComplexList[] cl = result.getComplexList();
+        int clSize = cl.length;
+        for (int i = 0 ; i < clSize; i++) {
 
+
+            complexInfos.add(new ComplexInfo(
+                    cl[i].getComplexName(),
+                    cl[i].getKindOfBuilding(),
+                    cl[i].getHouseholdNum(),
+                    cl[i].getCompletionDate(),
+                    cl[i].getComplexAddress(),
+                    cl[i].getComplexImg()));
+        }
+        /*
         for (FragMapComplexResponse.ComplexList complexList : result.getComplexList()) {
             String complexName = complexList.getComplexName();
             String complexAddress = complexList.getComplexAddress();
@@ -92,11 +105,30 @@ public class MapComplexFragment extends Fragment implements MapComplexFragView {
             String completionDate = complexList.getCompletionDate();
             String complexIdx = complexList.getComplexIdx();
 
+            ComplexInfo ci = new ComplexInfo();
 
-            addItem(complexName,kindOfBuilding,householdNum,completionDate,complexAddress,complexImg);
+            ci.setComplexName(complexName);
+            ci.setComplexAddress(complexAddress);
+            ci.setComplexImg(complexImg);
+            ci.setKindOfBuilding(kindOfBuilding);
+            ci.setHouseholdNum(householdNum);
+            ci.setCompletionDate(completionDate);
+
+            complex.add(ci);
+
+            System.out.println("add 전 : " + complexName+kindOfBuilding+householdNum+completionDate+complexAddress+complexImg);
+            //addItem(complexName,kindOfBuilding,householdNum,completionDate,complexAddress,complexImg);
 
         }
+         */
 
+
+//        for (int i = 0; i < complexInfos.size(); i++) {
+//            System.out.println(i + " : " + complexInfos.get(i).getComplexName());
+//        }
+
+        complexAdapter = new ComplexAdapter(getContext(), complexInfos);
+        listview.setAdapter(complexAdapter);
     }
 
         @Override
@@ -104,12 +136,11 @@ public class MapComplexFragment extends Fragment implements MapComplexFragView {
             System.out.println("실패");
         }
 
-        public void addItem(String complexName, String kindOfBuilding, String householdNum, String completionDate, String complexAddress, String complexImg) {
-
-            complexAdapter = new ComplexAdapter(getContext(), complex);
-            listview.setAdapter(complexAdapter);
-            complex.add(new ComplexInfo(complexName+" ",kindOfBuilding+" ",householdNum+" ",completionDate+" ",complexAddress+" ",complexImg+" "));
-        }
+//        public void addItem(String complexName, String kindOfBuilding, String householdNum, String completionDate, String complexAddress, String complexImg) {
+//
+//            ComplexInfo ci = new ComplexInfo(complexName+" ",kindOfBuilding+" ",householdNum+" ",completionDate+" ",complexAddress+" ",complexImg+" ");
+//            complex.add(ci);
+//        }
     }
 
 

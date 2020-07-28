@@ -8,5 +8,5 @@
     <color name="colorDabang_Black">#000000</color>
     <color name="colorDabang_White">#ffffff</color>
     <color name="colorDabang_bottomNavigationBar">#F8F8F8</color>
-
+    <color name="colorDabang_plus">#c4af80</color>
 </resources>
