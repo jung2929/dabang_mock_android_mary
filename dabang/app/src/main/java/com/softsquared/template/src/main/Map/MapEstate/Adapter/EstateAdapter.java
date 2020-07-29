@@ -73,7 +73,8 @@ public class EstateAdapter extends ArrayAdapter implements AdapterView.OnItemCli
         Glide
                 .with(context)
                 .load(agencyInfo.getAgencyBossImg())
-                .apply(new RequestOptions().circleCrop())
+                //.apply(new RequestOptions().circleCrop())
+                .apply(new RequestOptions().circleCrop().override(200,200))
                 .into(viewHolder.agencyBossImg);
 
 

@@ -63,7 +63,7 @@ public class FragMapResponse {
         return result;
     }
 
-    public RoomList getComplexList() {
+    public RoomList getRoomList() {
         return roomList;
     }
 

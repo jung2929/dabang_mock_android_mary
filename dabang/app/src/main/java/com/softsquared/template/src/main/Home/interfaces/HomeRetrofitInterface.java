@@ -12,6 +12,8 @@ public interface HomeRetrofitInterface {
     @GET("/contents")
      Call<FragHomeResponse> getHome();
 
+
+
 //    @GET("/test/{number}")
 //    Call<DefaultResponse> getTestPathAndQuery(
 //            @Path("number") int number,

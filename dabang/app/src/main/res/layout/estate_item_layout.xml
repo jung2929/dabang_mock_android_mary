@@ -17,7 +17,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="70dp"
+
+            android:layout_marginTop="10dp"
             android:orientation="vertical"
             android:layout_weight="1">
 
@@ -31,9 +32,10 @@
 
             <TextView
                 android:id="@+id/agencyAddress"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="TextView"
+                android:textSize="15dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -42,9 +44,9 @@
 
                 <ImageView
                     android:id="@+id/imageView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/circle"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:srcCompat="@drawable/estatemark"
                     android:layout_marginRight="5dp"/>
 
                 <TextView
@@ -52,6 +54,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TextView"
+                    android:textSize="15dp"
+                    android:layout_gravity="center_vertical"
                     android:textColor="@color/colorDabang"/>
             </LinearLayout>
 
@@ -61,7 +65,8 @@
             android:id="@+id/agencyBossImg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:srcCompat="@mipmap/ic_launcher" />
+            tools:srcCompat="@mipmap/ic_launcher"
+            android:layout_marginTop="10dp"/>
 
     </LinearLayout>
 
@@ -76,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            tools:srcCompat="@tools:sample/avatars"
+            app:srcCompat="@drawable/ic_launcher_background"
             android:layout_marginRight="10dp"/>
 
         <ImageView
@@ -84,7 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:srcCompat="@drawable/ic_launcher_background"/>
     </LinearLayout>
 
     <LinearLayout
@@ -98,6 +103,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/colorDabang_White"
+            android:background="@drawable/stroke5"
             android:layout_marginRight="5dp"
             android:text="전화상담" />
 
@@ -107,13 +114,19 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="방 보러가기"
+            android:textColor="@color/colorDabang"
+            android:background="@drawable/stroke4"
             android:layout_marginRight="5dp"/>
 
-        <Button
-            android:id="@+id/button6"
+        <ImageButton
+            android:id="@+id/imageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:padding="5dp"
+            android:tint="@color/colorDabang"
+            android:background="@drawable/stroke4"
+            app:srcCompat="@drawable/main_location_icon" />
+
     </LinearLayout>
 
     <View

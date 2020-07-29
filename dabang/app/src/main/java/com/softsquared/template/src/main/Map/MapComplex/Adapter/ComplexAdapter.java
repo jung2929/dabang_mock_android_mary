@@ -68,9 +68,6 @@ public class ComplexAdapter extends ArrayAdapter implements AdapterView.OnItemCl
         viewHolder.complexAddress = (TextView) convertView.findViewById(R.id.complexAddress);
         viewHolder.complexImg = (ImageView) convertView.findViewById(R.id.complexImg);
 
-//        System.out.println("size = " + list.size());
-//        System.out.println("pos = " + position);
-
 
         final ComplexInfo complexInfo = (ComplexInfo) list.get(position);
         viewHolder.complexName.setText(complexInfo.getComplexName());
@@ -78,22 +75,14 @@ public class ComplexAdapter extends ArrayAdapter implements AdapterView.OnItemCl
         viewHolder.householdNum.setText(complexInfo.getHouseholdNum());
         viewHolder.completionDate.setText(complexInfo.getCompletionDate());
         viewHolder.complexAddress.setText(complexInfo.getComplexAddress());
-        System.out.println(complexInfo.getComplexName());
+        //System.out.println(complexInfo.getComplexName());
         Glide
                 .with(context)
                 .load(complexInfo.getComplexImg())
                 .apply(new RequestOptions().override(400,800))
+                //.apply(new RequestOptions().circleCrop().override(100,200))
                 .into(viewHolder.complexImg);
 
-
-
-
-//        convertView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(context, " " + dangi_info.getComplexName(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
         return convertView;
     }

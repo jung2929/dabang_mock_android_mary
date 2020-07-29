@@ -1,10 +1,15 @@
 package com.softsquared.template.src.main.Map.MapEstate.models;
 
 public class EstateInfo {
-    private static String agencyName;
-    private static String agencyAddress;
-    private static String agencyComment;
-    private static String agencyBossImg;
+    private  String agencyName;
+    private  String agencyAddress;
+    private  String agencyComment;
+    private  String agencyBossImg;
+    //private  String roomImg;
+
+    public EstateInfo() {
+
+    }
 
 
     public EstateInfo(String agencyName, String agencyAddress, String agencyComment, String agencyBossImg) {
@@ -12,25 +17,29 @@ public class EstateInfo {
         this.agencyAddress = agencyAddress;
         this.agencyComment = agencyComment;
         this.agencyBossImg = agencyBossImg;
-
+        //this.roomImg = roomImg;
     }
 
 
-    public static String getAgencyName() {
+    public  String getAgencyName() {
         return agencyName;
     }
 
-    public static String getAgencyAddress() {
+    public  String getAgencyAddress() {
         return agencyAddress;
     }
 
-    public static String getAgencyComment() {
+    public  String getAgencyComment() {
         return agencyComment;
     }
 
-    public static String getAgencyBossImg() {
+    public  String getAgencyBossImg() {
         return agencyBossImg;
     }
+
+    //public  String getRoomImg() {
+        //return roomImg;
+    //}
 
 
 

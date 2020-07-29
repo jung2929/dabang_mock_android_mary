@@ -25,6 +25,7 @@ public class MapEstateFragment extends Fragment implements MapEstateFragView {
     private static ListView MapEstateListview;
     private static EstateAdapter estateAdapter;
     Handler MapEstatehandler;
+    ArrayList<EstateInfo> estateInfos = new ArrayList<>();
 
     public static MapEstateFragment newInstance(){
         MapEstateFragment frag_map_estate = new MapEstateFragment();
@@ -60,16 +61,35 @@ public class MapEstateFragment extends Fragment implements MapEstateFragView {
 
     @Override
     public void validateSuccess(FragMapEstateResponse.result result) {
-        for (FragMapEstateResponse.AgencyList agencyList : result.getAgencyList()) {
-            String agencyName = agencyList.getAgencyName();
-            String agencyAddress = agencyList.getAgencyAddress();
-            String agencyComment = agencyList.getAgencyComment();
-            String agencyBossImg = agencyList.getAgencyBossImg();
+        FragMapEstateResponse.AgencyList[] al = result.getAgencyList();
 
-            //System.out.println(agencyName);
-            addItem(agencyName,agencyAddress,agencyComment,agencyBossImg);
+        int alSize = al.length;
+        for (int i = 0 ; i < alSize; i++) {
 
+            String agencyName = al[i].getAgencyName();
+            String agencyAddress = al[i].getAgencyAddress();
+            String agencyComment = al[i].getAgencyComment();
+            String agencyBossImg = al[i].getAgencyBossImg();
+
+
+
+            if( agencyComment == null) agencyComment = "hi";
+
+            estateInfos.add(new EstateInfo(
+                    agencyName,
+                    agencyAddress,
+                    agencyComment,
+                    agencyBossImg
+                   ));
         }
+
+
+        estateAdapter = new EstateAdapter(getContext(), estateInfos);
+        MapEstateListview.setAdapter(estateAdapter);
+
+
+
+
     }
 
     @Override
@@ -77,11 +97,4 @@ public class MapEstateFragment extends Fragment implements MapEstateFragView {
 
     }
 
-
-    public void addItem(String agencyName, String agencyAddress, String agencyComment, String agencyBossImg) {
-
-        estateAdapter = new EstateAdapter(getContext(), estate);
-        MapEstateListview.setAdapter(estateAdapter);
-        estate.add(new EstateInfo(agencyName+" ",agencyAddress+" ",agencyComment+" ",agencyBossImg+" "));
-    }
 }

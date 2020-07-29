@@ -95,37 +95,7 @@ public class MapComplexFragment extends Fragment implements MapComplexFragView {
                     cl[i].getComplexAddress(),
                     cl[i].getComplexImg()));
         }
-        /*
-        for (FragMapComplexResponse.ComplexList complexList : result.getComplexList()) {
-            String complexName = complexList.getComplexName();
-            String complexAddress = complexList.getComplexAddress();
-            String complexImg = complexList.getComplexImg();
-            String kindOfBuilding = complexList.getKindOfBuilding();
-            String householdNum = complexList.getHouseholdNum();
-            String completionDate = complexList.getCompletionDate();
-            String complexIdx = complexList.getComplexIdx();
 
-            ComplexInfo ci = new ComplexInfo();
-
-            ci.setComplexName(complexName);
-            ci.setComplexAddress(complexAddress);
-            ci.setComplexImg(complexImg);
-            ci.setKindOfBuilding(kindOfBuilding);
-            ci.setHouseholdNum(householdNum);
-            ci.setCompletionDate(completionDate);
-
-            complex.add(ci);
-
-            System.out.println("add 전 : " + complexName+kindOfBuilding+householdNum+completionDate+complexAddress+complexImg);
-            //addItem(complexName,kindOfBuilding,householdNum,completionDate,complexAddress,complexImg);
-
-        }
-         */
-
-
-//        for (int i = 0; i < complexInfos.size(); i++) {
-//            System.out.println(i + " : " + complexInfos.get(i).getComplexName());
-//        }
 
         complexAdapter = new ComplexAdapter(getContext(), complexInfos);
         listview.setAdapter(complexAdapter);
@@ -136,11 +106,6 @@ public class MapComplexFragment extends Fragment implements MapComplexFragView {
             System.out.println("실패");
         }
 
-//        public void addItem(String complexName, String kindOfBuilding, String householdNum, String completionDate, String complexAddress, String complexImg) {
-//
-//            ComplexInfo ci = new ComplexInfo(complexName+" ",kindOfBuilding+" ",householdNum+" ",completionDate+" ",complexAddress+" ",complexImg+" ");
-//            complex.add(ci);
-//        }
     }
 
 

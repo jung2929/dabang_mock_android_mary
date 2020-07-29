@@ -14,10 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.Interpolator;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.SearchView;
 import android.widget.Toast;
+import android.widget.LinearLayout;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,30 +32,30 @@ import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 
-import com.google.android.gms.maps.model.LatLngBounds;
+
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.tabs.TabLayout;
 
 import com.google.maps.android.clustering.Cluster;
-import com.google.maps.android.clustering.ClusterItem;
+
 import com.google.maps.android.clustering.ClusterManager;
-import com.google.maps.android.clustering.view.DefaultClusterRenderer;
+
 import com.google.maps.android.data.geojson.GeoJsonLayer;
 import com.google.maps.android.data.geojson.GeoJsonPolygonStyle;
 
-import com.google.maps.android.ui.IconGenerator;
+
 import com.softsquared.template.R;
 import com.softsquared.template.src.Search.SearchActivity;
 import com.softsquared.template.src.main.Map.Adapter.ViewPagerAdapter2;
+
 import com.softsquared.template.src.main.Map.interfaces.MapFragView;
 import com.softsquared.template.src.main.Map.models.FragMapResponse;
 
 import org.json.JSONException;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 public class MapFragment extends Fragment implements OnMapReadyCallback , View.OnClickListener, MapFragView,ClusterManager.OnClusterClickListener<MyItem>, ClusterManager.OnClusterInfoWindowClickListener<MyItem>, ClusterManager.OnClusterItemClickListener<MyItem>, ClusterManager.OnClusterItemInfoWindowClickListener<MyItem>, GoogleMap.OnMarkerClickListener{
@@ -64,7 +63,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback , View.O
     private MapView mapView;
     private FragmentPagerAdapter fragmentPagerAdapter;
     private GoogleMap googleMap;
-    Handler handler2;
+    Handler mapHandler;
     private ClusterManager<MyItem> mClusterManager;
 
 
@@ -74,14 +73,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback , View.O
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_map, container, false);
 
-        handler2 = new Handler();
-        Thread t = new Thread(new Runnable() {
+        mapHandler = new Handler();
+        Thread mapThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 getMapInfo();
             }
         });
-        t.start();
+        mapThread.start();
 
         ViewPager viewPager = view.findViewById(R.id.viewPager2);
         fragmentPagerAdapter = new ViewPagerAdapter2(getChildFragmentManager());
@@ -103,8 +102,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback , View.O
     }
 
     private void getMapInfo() {
-        final MapFragService fragService = new MapFragService(this);
-        fragService.getMap("원룸|오피스텔|아파트|투쓰리룸","0","999999999","0","99999999","37.5055200000","127.0783540000","10000000"); //MainActivity에서 통신하는 방법: MainService객체를 생성하고 함수호출
+        final MapFragService mapFragService = new MapFragService(this);
+        mapFragService.getMap("원룸|오피스텔|아파트|투쓰리룸","0","999999999","0","99999999","37.5055200000","127.0783540000","10000000"); //MainActivity에서 통신하는 방법: MainService객체를 생성하고 함수호출
         //고칠필요 x
     }
 
@@ -113,14 +112,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback , View.O
     @Override
     public void onMapReady(@NonNull final GoogleMap googleMap) {
         this.googleMap = googleMap;
-        //mClusterManager = new ClusterManager<>(getActivity(),googleMap);
+        mClusterManager = new ClusterManager<>(getActivity(),googleMap);
 
         LatLng dong = new LatLng(37.5015118,127.060803); //대치동 위도경도
+
         MarkerOptions dongMarker = new MarkerOptions();
         dongMarker.position(dong); //마커위치
         dongMarker.icon((getIcon())); //마커 커스텀
         googleMap.addMarker(dongMarker); //마커 표시
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(dong,14)); //숫자만큼 zoom한것
+        markBoundry();
         googleMap.setOnMarkerClickListener(this::onMarkerClick);
 //            @Override
 //            public boolean onMarkerClick(Marker marker) {
@@ -133,12 +134,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback , View.O
 
 
 //        mClusterManager.setRenderer(new MarkerRenderer(getContext(),googleMap,mClusterManager));
-//        mClusterManager.setOnClusterItemClickListener(this);
 
-       // googleMap.setOnCameraIdleListener(mClusterManager);
-        //googleMap.setOnMarkerClickListener(mClusterManager);
+        googleMap.setOnCameraIdleListener(mClusterManager);
+        googleMap.setOnMarkerClickListener(mClusterManager);
         //mClusterManager.setRenderer(new PersonRenderer()); //클러스터링 되는 마커 커스텀
-        //mClusterManager.setOnClusterItemClickListener(this::onClusterItemClick);
+       // mClusterManager.setOnClusterItemClickListener(this::onClusterItemClick);
 
     }
 
@@ -150,72 +150,72 @@ public class MapFragment extends Fragment implements OnMapReadyCallback , View.O
         return true;
     }
 
-    private class PersonRenderer extends DefaultClusterRenderer<MyItem> {
-        private final IconGenerator mIconGenerator = new IconGenerator(getContext());
-        private final IconGenerator mClusterIconGenerator = new IconGenerator(getContext());
-
-
-        public PersonRenderer() {
-            super(getContext(), googleMap, mClusterManager);
-
-            View multiProfile = getLayoutInflater().inflate(R.layout.cluster, null); //이미지layout
-            mClusterIconGenerator.setContentView(multiProfile); //o
-
-        }
-
-        @Override
-        protected void onBeforeClusterItemRendered(@NonNull MyItem myItem, MarkerOptions markerOptions) { //클러스터링 하기전 아이템 렌더링
-            // Draw a single person - show their profile photo and set the info window to show their name
-            markerOptions
-                    .icon(getItemIcon(myItem));
-
-        }
-
-        @Override
-        protected void onClusterItemUpdated(@NonNull MyItem myItem, Marker marker) {
-            // Same implementation as onBeforeClusterItemRendered() (to update cached markers)
-            marker.setIcon(getItemIcon(myItem));
-
-        }
-
-        private BitmapDescriptor getItemIcon(MyItem myItem) {
-            Bitmap icon = mIconGenerator.makeIcon();
-            return BitmapDescriptorFactory.fromBitmap(icon);
-        }
-
-        @Override
-        protected void onBeforeClusterRendered(@NonNull Cluster<MyItem> cluster, MarkerOptions markerOptions) {
-            // Draw multiple people.
-            // Note: this method runs on the UI thread. Don't spend too much time in here (like in this example).
-           // markerOptions.icon(getClusterIcon(cluster));
-            //super.onBeforeClusterRendered(cluster, markerOptions);
-
-            IconGenerator iconFactory = new IconGenerator(getContext());
-            iconFactory.setStyle(IconGenerator.STYLE_GREEN);
-            Bitmap icon = iconFactory.makeIcon("abc /bcd");
-
-            markerOptions.icon(BitmapDescriptorFactory.fromBitmap(icon));
-        }
-
-        @Override
-        protected void onClusterUpdated(@NonNull Cluster<MyItem> cluster, Marker marker) {
-            // Same implementation as onBeforeClusterRendered() (to update cached markers)
-            marker.setIcon(getClusterIcon(cluster));
-        }
-
-
-        private BitmapDescriptor getClusterIcon(Cluster<MyItem> cluster) {
-
-            Bitmap icon = mClusterIconGenerator.makeIcon(String.valueOf(cluster.getSize()));
-            return BitmapDescriptorFactory.fromBitmap(icon);
-        }
-
-        @Override
-        protected boolean shouldRenderAsCluster(Cluster cluster) {
-            // Always render clusters.
-            return cluster.getSize() > 1;
-        }
-    }
+//    private class PersonRenderer extends DefaultClusterRenderer<MyItem> {
+//        private final IconGenerator mIconGenerator = new IconGenerator(getContext());
+//        private final IconGenerator mClusterIconGenerator = new IconGenerator(getContext());
+//
+//
+//        public PersonRenderer() {
+//            super(getContext(), googleMap, mClusterManager);
+//
+//            View multiProfile = getLayoutInflater().inflate(R.layout.cluster, null); //이미지layout
+//            mClusterIconGenerator.setContentView(multiProfile); //o
+//
+//        }
+//
+//        @Override
+//        protected void onBeforeClusterItemRendered(@NonNull MyItem myItem, MarkerOptions markerOptions) { //클러스터링 하기전 아이템 렌더링
+//            // Draw a single person - show their profile photo and set the info window to show their name
+//            markerOptions
+//                    .icon(getItemIcon(myItem));
+//
+//        }
+//
+//        @Override
+//        protected void onClusterItemUpdated(@NonNull MyItem myItem, Marker marker) {
+//            // Same implementation as onBeforeClusterItemRendered() (to update cached markers)
+//            marker.setIcon(getItemIcon(myItem));
+//
+//        }
+//
+//        private BitmapDescriptor getItemIcon(MyItem myItem) {
+//            Bitmap icon = mIconGenerator.makeIcon();
+//            return BitmapDescriptorFactory.fromBitmap(icon);
+//        }
+//
+//        @Override
+//        protected void onBeforeClusterRendered(@NonNull Cluster<MyItem> cluster, MarkerOptions markerOptions) {
+//            // Draw multiple people.
+//            // Note: this method runs on the UI thread. Don't spend too much time in here (like in this example).
+//           // markerOptions.icon(getClusterIcon(cluster));
+//            //super.onBeforeClusterRendered(cluster, markerOptions);
+//
+//            IconGenerator iconFactory = new IconGenerator(getContext());
+//            iconFactory.setStyle(IconGenerator.STYLE_GREEN);
+//            Bitmap icon = iconFactory.makeIcon("abc /bcd");
+//
+//            markerOptions.icon(BitmapDescriptorFactory.fromBitmap(icon));
+//        }
+//
+//        @Override
+//        protected void onClusterUpdated(@NonNull Cluster<MyItem> cluster, Marker marker) {
+//            // Same implementation as onBeforeClusterRendered() (to update cached markers)
+//            marker.setIcon(getClusterIcon(cluster));
+//        }
+//
+//
+//        private BitmapDescriptor getClusterIcon(Cluster<MyItem> cluster) {
+//
+//            Bitmap icon = mClusterIconGenerator.makeIcon(String.valueOf(cluster.getSize()));
+//            return BitmapDescriptorFactory.fromBitmap(icon);
+//        }
+//
+//        @Override
+//        protected boolean shouldRenderAsCluster(Cluster cluster) {
+//            // Always render clusters.
+//            return cluster.getSize() > 1;
+//        }
+//    }
 
 
 
@@ -309,15 +309,28 @@ public class MapFragment extends Fragment implements OnMapReadyCallback , View.O
 
         //int roomNum = Integer.parseInt(result.getRoomNum());
 
-        for(FragMapResponse.RoomList roomList : result.getRoomList()) {
+//
+//        FragMapResponse.RoomList[] rl = result.getRoomList();
+//        int rlSize = rl.length;
+//        for (int i = 0 ; i < rlSize; i++) {
+//
+//            float Lat = Float.parseFloat(rl[i].getLatitude());
+//            float Lng = Float.parseFloat(rl[i].getLongitude());
+
+        //System.out.println(Lat+ Lng);
+//        addRoomItem(Lat,Lng);
+//        }
+
+        for (FragMapResponse.RoomList roomList : result.getRoomList()) {
             float Lat = Float.parseFloat(roomList.getLatitude());
             float Lng = Float.parseFloat(roomList.getLongitude());
 
-            //addRoomItem(Lat,Lng);
-            //System.out.println(roomNum);
+            addRoomItem(Lat,Lng);
+            //System.out.println(Lat + Lng);
 
-            }
+        }
     }
+
 
     @Override
     public void validateFailure(String message) {
@@ -329,26 +342,26 @@ public class MapFragment extends Fragment implements OnMapReadyCallback , View.O
 
         // Show a toast with some info when the cluster is clicked.
         //String firstName = cluster.getItems().iterator().next().name;
-        String firstName = "hi";
-        Toast.makeText(getActivity(), cluster.getSize() + " (including " + firstName + ")", Toast.LENGTH_SHORT).show();
+       // String firstName = "hi";
+        //Toast.makeText(getActivity(), cluster.getSize() + " (including " + firstName + ")", Toast.LENGTH_SHORT).show();
 
         // Zoom in the cluster. Need to create LatLngBounds and including all the cluster items
         // inside of bounds, then animate to center of the bounds.
 
         // Create the builder to collect all essential cluster items for the bounds.
-        LatLngBounds.Builder builder = LatLngBounds.builder();
-        for (ClusterItem item : cluster.getItems()) {
-            builder.include(item.getPosition());
-        }
+//        LatLngBounds.Builder builder = LatLngBounds.builder();
+//        for (ClusterItem item : cluster.getItems()) {
+//            builder.include(item.getPosition());
+//        }
         // Get the LatLngBounds
-        final LatLngBounds bounds = builder.build();
+       // final LatLngBounds bounds = builder.build();
 
         // Animate camera to the bounds
-        try {
-            googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
         return true;
     }
@@ -360,7 +373,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback , View.O
 
     @Override
     public boolean onClusterItemClick(MyItem item) { //클러스터링 아이템 클릭했을 때
-        return false;
+        String firstName = "hi";
+        Toast.makeText(getActivity(),  " (including " + firstName + ")", Toast.LENGTH_SHORT).show();
+        return true;
     }
 
     @Override

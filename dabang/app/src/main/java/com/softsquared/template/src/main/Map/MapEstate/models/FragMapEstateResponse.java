@@ -46,6 +46,14 @@ public class FragMapEstateResponse {
         private String longitude;
 
 
+        @SerializedName("roomList")
+        private RoomList[] roomList;
+
+        public RoomList[] getRoomList() {
+            return roomList;
+        }
+
+
         public String getAgencyIdx() {
             return agencyIdx;
         }
@@ -75,6 +83,65 @@ public class FragMapEstateResponse {
         }
     }
 
+    public class RoomList {
+        @SerializedName("roomIdx")
+        private String roomIdx;
+
+        @SerializedName("monthlyRent")
+        private String monthlyRent;
+
+        @SerializedName("lease")
+        private String lease;
+
+        @SerializedName("kindOfRoom")
+        private String kindOfRoom;
+
+        @SerializedName("thisFloor")
+        private String thisFloor;
+
+        @SerializedName("exclusiveArea")
+        private String exclusiveArea;
+
+        @SerializedName("maintenanceCost")
+        private String maintenanceCost;
+
+        public String getRoomIdx() {
+            return roomIdx;
+        }
+
+        public String getMonthlyRent() {
+            return monthlyRent;
+        }
+
+        public String getLease() {
+            return lease;
+        }
+
+        public String getKindOfRoom() {
+            return kindOfRoom;
+        }
+
+        public String getThisFloor() {
+            return thisFloor;
+        }
+
+        public String getExclusiveArea() {
+            return exclusiveArea;
+        }
+
+        public String getMaintenanceCost() {
+            return maintenanceCost;
+        }
+
+        public String getRoomImg() {
+            return roomImg;
+        }
+
+        @SerializedName("roomImg")
+        private String roomImg;
+    }
+
+
 
     @SerializedName("code") //서버에서 받아온 response를 자동으로 파싱해줌
     private int code;
@@ -90,14 +157,21 @@ public class FragMapEstateResponse {
 
     @SerializedName("agencyList")
     private AgencyList agencyList;
+//
+//    @SerializedName("roomList")
+//    private RoomList roomList;
 
-    public result getResult() {
+    public  result getResult() {
         return result;
     }
 
     public AgencyList getAgencyList() {
         return agencyList;
     }
+
+//    public RoomList getRoomList() {
+//        return roomList;
+//    }
 
     public int getCode() {
         return code;

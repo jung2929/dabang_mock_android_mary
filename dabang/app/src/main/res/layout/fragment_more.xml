@@ -287,7 +287,7 @@
                 android:id="@+id/textView24"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="9dp"
                 android:textColor="@color/colorDabang_Black"
                 android:text="패밀리 APP"
                 android:layout_marginStart="15dp"
@@ -296,27 +296,27 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="22dp"
-                android:layout_marginStart="12dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginStart="14dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="18dp"
+                    android:layout_marginRight="20dp"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="4dp"
-                        android:background="@drawable/pro" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/pro2" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="다방프로"
+                        android:layout_marginLeft="4dp"
                         android:textSize="13dp"/>
 
                 </LinearLayout>
@@ -328,15 +328,16 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="4dp"
-                        android:background="@drawable/hub" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+
+                        android:background="@drawable/hub2" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:layout_marginLeft="4dp"
                         android:text="다방허브"
                         android:textSize="13dp"/>
 
@@ -353,7 +354,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="9dp"
                 android:text="다방 SNS"
                 android:layout_marginStart="15dp"
                 android:textSize="13dp"
@@ -363,24 +364,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginStart="12dp">
+                android:layout_marginStart="14dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="18dp"
+                    android:layout_marginRight="20dp"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="4dp"
-                        android:background="@drawable/facebook" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/facebook2" />
 
                     <TextView
                         android:id="@+id/textView25"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
                         android:layout_gravity="center"
                         android:text="페이스북"
                         android:textSize="13.5dp"/>
@@ -393,16 +394,16 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="4dp"
-                        android:background="@drawable/naver" />
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/naver2" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="네이버포스트"
+                        android:layout_marginLeft="4dp"
                         android:textSize="14dp"/>
 
                 </LinearLayout>
