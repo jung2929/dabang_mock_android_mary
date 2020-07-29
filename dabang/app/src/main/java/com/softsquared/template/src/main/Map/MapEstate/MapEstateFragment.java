@@ -27,7 +27,7 @@ public class MapEstateFragment extends Fragment implements MapEstateFragView {
     Handler MapEstatehandler;
     ArrayList<EstateInfo> estateInfos = new ArrayList<>();
 
-    public static MapEstateFragment newInstance(){
+    public static MapEstateFragment newInstance() {
         MapEstateFragment frag_map_estate = new MapEstateFragment();
         return frag_map_estate;
     }
@@ -35,7 +35,7 @@ public class MapEstateFragment extends Fragment implements MapEstateFragView {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.frag_map_estate,container,false);
+        view = inflater.inflate(R.layout.frag_map_estate, container, false);
         //최근 본 방 프래그먼트 불러오기
         estate = new ArrayList<>();
         MapEstatehandler = new Handler();
@@ -52,7 +52,6 @@ public class MapEstateFragment extends Fragment implements MapEstateFragView {
     }
 
 
-
     private void getEstateInfo() {
         final MapEstateFragService mapEstateFragService = new MapEstateFragService(this);
         mapEstateFragService.getEstate("서울특별시 강남구 대치동"); //MainActivity에서 통신하는 방법: MainService객체를 생성하고 함수호출
@@ -64,7 +63,22 @@ public class MapEstateFragment extends Fragment implements MapEstateFragView {
         FragMapEstateResponse.AgencyList[] al = result.getAgencyList();
 
         int alSize = al.length;
-        for (int i = 0 ; i < alSize; i++) {
+
+        for (FragMapEstateResponse.AgencyList agency : al) {
+
+            for (FragMapEstateResponse.RoomList room : agency.getRoomList()) {
+
+                String monthlyRent = room.getMonthlyRent();
+                String lease = room.getLease();
+                String kindOfRoom = room.getKindOfRoom();
+                String thisFloor = room.getThisFloor();
+                String exclusiveArea = room.getExclusiveArea();
+                String maintenanceCost = room.getMaintenanceCost();
+                String roomImg = room.getRoomImg();
+            } //내일 물어보고 쓰자
+        }
+
+        for (int i = 0; i < alSize; i++) {
 
             String agencyName = al[i].getAgencyName();
             String agencyAddress = al[i].getAgencyAddress();
@@ -72,22 +86,19 @@ public class MapEstateFragment extends Fragment implements MapEstateFragView {
             String agencyBossImg = al[i].getAgencyBossImg();
 
 
-
-            if( agencyComment == null) agencyComment = "hi";
+            if (agencyComment == null) agencyComment = "hi";
 
             estateInfos.add(new EstateInfo(
                     agencyName,
                     agencyAddress,
                     agencyComment,
                     agencyBossImg
-                   ));
+            ));
         }
 
 
         estateAdapter = new EstateAdapter(getContext(), estateInfos);
         MapEstateListview.setAdapter(estateAdapter);
-
-
 
 
     }

@@ -52,7 +52,7 @@ public class MapComplexFragment extends Fragment implements MapComplexFragView {
         });
         MapComplexThread.start();
 
-          listview = view.findViewById(R.id.frag_map_dangi_list);
+        listview = view.findViewById(R.id.frag_map_dangi_list);
 //        complexAdapter = new ComplexAdapter(getContext(), complex);
 //        listview.setAdapter(complexAdapter);
 
@@ -84,7 +84,8 @@ public class MapComplexFragment extends Fragment implements MapComplexFragView {
 //        ArrayList<ComplexInfo> complexInfos = new ArrayList<>();
         FragMapComplexResponse.ComplexList[] cl = result.getComplexList();
         int clSize = cl.length;
-        for (int i = 0 ; i < clSize; i++) {
+
+        for (int i = 0; i < clSize; i++) {
 
 
             complexInfos.add(new ComplexInfo(
@@ -101,12 +102,12 @@ public class MapComplexFragment extends Fragment implements MapComplexFragView {
         listview.setAdapter(complexAdapter);
     }
 
-        @Override
-        public void validateFailure(String message){
-            System.out.println("실패");
-        }
-
+    @Override
+    public void validateFailure(String message) {
+        System.out.println("실패");
     }
+
+}
 
 
 

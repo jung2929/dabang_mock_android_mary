@@ -70,27 +70,119 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:padding="10dp">
+   <FrameLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/ic_launcher_background"
-            android:layout_marginRight="10dp"/>
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imageView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/ic_launcher_background"/>
-    </LinearLayout>
+           <TextView
+               android:id="@+id/lease"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="TextView" />
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:orientation="horizontal">
+
+               <TextView
+                   android:id="@+id/kindOfBuilding"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="TextView" />
+
+               <TextView
+                   android:id="@+id/thisFloor"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="TextView" />
+
+               <TextView
+                   android:id="@+id/exclusiveArea"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="TextView" />
+
+               <TextView
+                   android:id="@+id/maintenanceCost"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="TextView" />
+           </LinearLayout>
+       </LinearLayout>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="horizontal"
+           android:padding="10dp">
+
+           <ImageView
+               android:id="@+id/estate_roomImg"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginRight="10dp"
+               android:layout_weight="1"
+               app:srcCompat="@drawable/ic_launcher_background" />
+
+           <ImageView
+               android:id="@+id/estate_roomImg2"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               app:srcCompat="@drawable/ic_launcher_background" />
+       </LinearLayout>
+
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:layout_gravity="right|bottom">
+
+           <TextView
+               android:id="@+id/lease"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="TextView" />
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:orientation="horizontal">
+
+               <TextView
+                   android:id="@+id/kindOfBuilding"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="TextView" />
+
+               <TextView
+                   android:id="@+id/thisFloor"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="TextView" />
+
+               <TextView
+                   android:id="@+id/exclusiveArea"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="TextView" />
+
+               <TextView
+                   android:id="@+id/maintenanceCost"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="TextView" />
+           </LinearLayout>
+       </LinearLayout>
+
+   </FrameLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
